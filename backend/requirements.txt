@@ -1,0 +1,16 @@
+# SMC-Niyantran Backend Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core API framework
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+
+# AI / Vision
+ultralytics==8.2.18        # YOLOv8 – auto-downloads yolov8n.pt on first run
+opencv-python-headless==4.9.0.80   # Headless OpenCV (no GUI dependencies)
+numpy==1.26.4
+
+# Required by ultralytics
+torch>=2.0.0               # PyTorch CPU version is fine for hackathon demo
+torchvision>=0.15.0
+pillow>=9.0.0
