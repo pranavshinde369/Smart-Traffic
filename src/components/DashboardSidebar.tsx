@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   Camera,
@@ -11,15 +12,17 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { icon: LayoutDashboard, label: 'Dashboard' },
-  { icon: Camera, label: 'Camera Feed' },
-  { icon: BarChart3, label: 'Analytics' },
-  { icon: Bell, label: 'Alerts' },
-  { icon: Settings, label: 'Settings' },
+  { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+  { icon: Camera, label: 'Camera Feed', path: '/camera-feed' },
+  { icon: BarChart3, label: 'Analytics', path: '/' },
+  { icon: Bell, label: 'Alerts', path: '/alerts' },
+  { icon: Settings, label: 'Settings', path: '/settings' },
 ];
 
 export function DashboardSidebar() {
   const [expanded, setExpanded] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <aside
@@ -41,19 +44,23 @@ export function DashboardSidebar() {
 
       {/* Nav */}
       <nav className="flex-1 py-4 space-y-1 px-2">
-        {navItems.map((item, i) => (
-          <button
-            key={item.label}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-              i === 0
-                ? 'bg-primary/10 text-primary'
-                : 'text-muted-foreground hover:text-foreground hover:bg-accent'
-            }`}
-          >
-            <item.icon className="w-5 h-5 flex-shrink-0" />
-            {expanded && <span className="text-sm font-medium">{item.label}</span>}
-          </button>
-        ))}
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <button
+              key={item.label}
+              onClick={() => navigate(item.path)}
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+                isActive
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+              }`}
+            >
+              <item.icon className="w-5 h-5 flex-shrink-0" />
+              {expanded && <span className="text-sm font-medium">{item.label}</span>}
+            </button>
+          );
+        })}
       </nav>
 
       {/* Footer */}

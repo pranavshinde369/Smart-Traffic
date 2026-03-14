@@ -32,11 +32,12 @@ const Alerts = () => {
     const interval = setInterval(() => {
       const zone = zones[Math.floor(Math.random() * zones.length)];
       const isViolation = Math.random() > 0.5;
+      const status: 'violation' | 'clear' = isViolation ? 'violation' : 'clear';
       setAlerts(prev => [{
         id: ++idRef.current,
         timestamp: new Date().toLocaleString(),
         zone,
-        status: isViolation ? 'violation' : 'clear',
+        status,
         message: isViolation ? 'Encroachment detected in No-Parking Zone' : 'Zone cleared — no violations',
       }, ...prev].slice(0, 50));
     }, 8000);
