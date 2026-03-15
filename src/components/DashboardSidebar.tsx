@@ -14,7 +14,7 @@ import {
 const navItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
   { icon: Camera, label: 'Camera Feed', path: '/camera-feed' },
-  { icon: BarChart3, label: 'Analytics', path: '/' },
+  { icon: BarChart3, label: 'Analytics', path: '/analytics' },
   { icon: Bell, label: 'Alerts', path: '/alerts' },
   { icon: Settings, label: 'Settings', path: '/settings' },
 ];

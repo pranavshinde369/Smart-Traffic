@@ -19,7 +19,7 @@ export function VideoFeed() {
         </span>
       </div>
 
-      <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-secondary">
+      <div className="relative h-[360px] aspect-video rounded-lg overflow-hidden bg-secondary">
         {error ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground">
             <Wifi className="w-8 h-8" />

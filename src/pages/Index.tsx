@@ -23,7 +23,6 @@ const Index = () => {
         <DashboardHeader />
         <div className="flex-1 p-6 space-y-4 overflow-y-auto">
           <AlertBanner encroachmentAlert={encroachmentAlert} error={error} />
-          <VideoFeed />
           <MetricCards
             vehicleCount={vehicleCount}
             dynamicGreenTime={dynamicGreenTime}
@@ -31,6 +30,7 @@ const Index = () => {
             backendStatus={backendStatus}
             error={error}
           />
+          <VideoFeed />
           <AnalyticsSection />
         </div>
       </main>
