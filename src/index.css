@@ -89,6 +89,15 @@
     100% { transform: scale(1); opacity: 1; }
   }
 
+  .metric-count-up {
+    animation: metric-count-up 0.4s ease-out;
+  }
+
+  @keyframes metric-count-up {
+    0% { transform: translateY(8px); opacity: 0.4; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
   .flash-alert {
     animation: flash-alert 1.5s ease-in-out infinite;
   }

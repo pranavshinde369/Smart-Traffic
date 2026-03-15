@@ -9,9 +9,10 @@ interface MetricCardProps {
   accentClass: string;
   progress?: number;
   statusDot?: 'online' | 'initializing' | null;
+  isOffline?: boolean;
 }
 
-function MetricCard({ icon: Icon, title, value, subtitle, accentClass, progress, statusDot }: MetricCardProps) {
+function MetricCard({ icon: Icon, title, value, subtitle, accentClass, progress, statusDot, isOffline }: MetricCardProps) {
   const [animate, setAnimate] = useState(false);
   const prevValue = useRef(value);
 
@@ -19,7 +20,7 @@ function MetricCard({ icon: Icon, title, value, subtitle, accentClass, progress,
     if (prevValue.current !== value) {
       setAnimate(true);
       prevValue.current = value;
-      const t = setTimeout(() => setAnimate(false), 300);
+      const t = setTimeout(() => setAnimate(false), 400);
       return () => clearTimeout(t);
     }
   }, [value]);
@@ -33,10 +34,16 @@ function MetricCard({ icon: Icon, title, value, subtitle, accentClass, progress,
         </div>
       </div>
       <div className="flex items-end gap-2">
-        <span className={`text-3xl font-bold font-mono ${animate ? 'metric-scale' : ''}`}>
-          {value}
-        </span>
-        {statusDot && (
+        {isOffline ? (
+          <span className="text-[44px] leading-none font-bold font-mono text-alert">Offline</span>
+        ) : (
+          <span
+            className={`text-[44px] leading-none font-bold font-mono text-foreground ${animate ? 'metric-count-up' : ''}`}
+          >
+            {value}
+          </span>
+        )}
+        {!isOffline && statusDot && (
           <span className={`text-xs font-medium flex items-center gap-1 mb-1 ${
             statusDot === 'online' ? 'text-success' : 'text-warning'
           }`}>
@@ -45,7 +52,7 @@ function MetricCard({ icon: Icon, title, value, subtitle, accentClass, progress,
         )}
       </div>
       <span className="text-xs text-muted-foreground">{subtitle}</span>
-      {progress !== undefined && (
+      {progress !== undefined && !isOffline && (
         <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
           <div
             className="h-full bg-success rounded-full transition-all duration-500"
@@ -73,32 +80,36 @@ export function MetricCards({ vehicleCount, dynamicGreenTime, carbonSavedKg, bac
       <MetricCard
         icon={Car}
         title="Live Traffic Density"
-        value={offline ? '--' : String(vehicleCount)}
+        value={String(vehicleCount)}
         subtitle="Vehicles detected in frame"
         accentClass="bg-primary/20 text-primary"
+        isOffline={offline}
       />
       <MetricCard
         icon={TrafficCone}
         title="RL Green Signal Time"
-        value={offline ? '--' : `${dynamicGreenTime}s`}
+        value={`${dynamicGreenTime}s`}
         subtitle="RL-Optimized duration"
         accentClass="bg-success/20 text-success"
-        progress={offline ? 0 : (dynamicGreenTime / 120) * 100}
+        progress={(dynamicGreenTime / 120) * 100}
+        isOffline={offline}
       />
       <MetricCard
         icon={Leaf}
         title="Eco-Niyantran"
-        value={offline ? '--' : `${carbonSavedKg} kg`}
+        value={`${carbonSavedKg} kg`}
         subtitle="CO₂ emissions saved today"
         accentClass="bg-emerald-500/20 text-emerald-400"
+        isOffline={offline}
       />
       <MetricCard
         icon={Activity}
         title="System Status"
-        value={offline ? '--' : ''}
+        value=""
         subtitle="Backend connection status"
         accentClass="bg-teal-500/20 text-teal-400"
         statusDot={offline ? null : backendStatus === 'live' ? 'online' : 'initializing'}
+        isOffline={offline}
       />
     </div>
   );
