@@ -128,4 +128,14 @@
   .dashboard-card {
     @apply bg-card rounded-xl border border-border p-5 transition-colors hover:border-muted-foreground/30;
   }
+
+  .scanline-overlay {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      hsl(0 0% 0% / 0.06) 2px,
+      hsl(0 0% 0% / 0.06) 4px
+    );
+  }
 }
