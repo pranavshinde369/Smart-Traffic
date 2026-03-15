@@ -98,6 +98,15 @@
     50% { opacity: 0.7; }
   }
 
+  .alert-border-pulse {
+    animation: flash-alert 1.5s ease-in-out infinite, alert-border-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes alert-border-glow {
+    0%, 100% { border-color: hsl(var(--alert) / 0.4); box-shadow: 0 0 8px hsl(var(--alert) / 0.15); }
+    50% { border-color: hsl(var(--alert) / 0.8); box-shadow: 0 0 20px hsl(var(--alert) / 0.3); }
+  }
+
   .yatra-glow {
     animation: yatra-pulse 2s ease-in-out infinite;
   }
