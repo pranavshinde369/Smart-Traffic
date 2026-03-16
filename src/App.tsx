@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import CameraFeed from "./pages/CameraFeed.tsx";
 import Alerts from "./pages/Alerts.tsx";
+import Analytics from "./pages/Analytics.tsx";
 import Settings from "./pages/Settings.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
