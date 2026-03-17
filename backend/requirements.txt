@@ -14,3 +14,4 @@ numpy==1.26.4
 torch>=2.0.0               # PyTorch CPU version is fine for hackathon demo
 torchvision>=0.15.0
 pillow>=9.0.0
+python-multipart==0.0.9
