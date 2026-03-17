@@ -64,10 +64,11 @@ ZONE_NAMES        = {
 # ─────────────────────────────────────────────
 settings = {
     # No-parking zone pixel coords on 640×480 frame
-    "zone_x1":          50,
-    "zone_y1":         200,
-    "zone_x2":         350,
-    "zone_y2":         450,
+    # RIGHT-SIDE road shoulder beyond white divider — Market Yard Junction
+    "zone_x1":         460,
+    "zone_y1":          80,
+    "zone_x2":         650,
+    "zone_y2":         350,
     # YOLO confidence threshold
     "confidence":      0.35,
     # Yatra Mode – overrides RL signal with fixed value
@@ -190,11 +191,13 @@ def draw_zone(frame: np.ndarray, zone: tuple) -> np.ndarray:
     x1, y1, x2, y2 = zone
     overlay = frame.copy()
     cv2.rectangle(overlay, (x1, y1), (x2, y2), (0, 100, 255), -1)
-    cv2.addWeighted(overlay, 0.15, frame, 0.85, 0, frame)
-    cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 160, 255), 2)
+    cv2.addWeighted(overlay, 0.18, frame, 0.82, 0, frame)
+    cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 200, 255), 3)
+    # Label always inside the box (8px from top-left corner)
+    label_y = y1 + 18 if y1 + 18 < y2 else y1 + 10
     cv2.putText(frame, "NO PARKING ZONE",
-                (x1 + 4, y1 - 8),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 200, 255), 1, cv2.LINE_AA)
+                (x1 + 6, label_y),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.48, (0, 230, 255), 1, cv2.LINE_AA)
     return frame
 
 def draw_hud(frame: np.ndarray, count: int, green_time: int,
