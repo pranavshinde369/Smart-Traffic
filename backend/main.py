@@ -68,7 +68,7 @@ settings = {
     "zone_x1":         460,
     "zone_y1":          80,
     "zone_x2":         650,
-    "zone_y2":         350,
+    "zone_y2":         300,
     # YOLO confidence threshold
     "confidence":      0.35,
     # Yatra Mode – overrides RL signal with fixed value
