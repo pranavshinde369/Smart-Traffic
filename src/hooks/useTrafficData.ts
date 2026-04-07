@@ -6,6 +6,7 @@ interface TrafficData {
   dynamicGreenTime: number;
   carbonSavedKg: number;
   backendStatus: string;
+  congestionPrediction: string;
   isLoading: boolean;
   error: string | null;
 }
@@ -17,6 +18,7 @@ export function useTrafficData(): TrafficData {
     dynamicGreenTime: 0,
     carbonSavedKg: 0,
     backendStatus: 'offline',
+    congestionPrediction: '',
     isLoading: true,
     error: null,
   });
@@ -33,6 +35,7 @@ export function useTrafficData(): TrafficData {
         dynamicGreenTime: json.dynamic_green_time ?? 0,
         carbonSavedKg: json.carbon_saved_kg ?? 0,
         backendStatus: json.backend_status ?? 'offline',
+        congestionPrediction: json.congestion_prediction ?? '',
         isLoading: false,
         error: null,
       });
