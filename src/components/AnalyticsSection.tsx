@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
   ReferenceLine, CartesianGrid, Cell, Area, ComposedChart, Legend, LabelList,
