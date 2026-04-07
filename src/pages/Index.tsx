@@ -4,6 +4,7 @@ import { VideoFeed } from '@/components/VideoFeed';
 import { MetricCards } from '@/components/MetricCards';
 import { AlertBanner } from '@/components/AlertBanner';
 import { AnalyticsSection } from '@/components/AnalyticsSection';
+import { PredictionBanner } from '@/components/PredictionBanner';
 import { AIChatWidget } from '@/components/AIChatWidget';
 import { useTrafficData } from '@/hooks/useTrafficData';
 
@@ -14,6 +15,7 @@ const Index = () => {
     dynamicGreenTime,
     carbonSavedKg,
     backendStatus,
+    congestionPrediction,
     error,
   } = useTrafficData();
 
@@ -31,6 +33,7 @@ const Index = () => {
             backendStatus={backendStatus}
             error={error}
           />
+          <PredictionBanner prediction={congestionPrediction} />
           <VideoFeed />
           <AnalyticsSection />
           <AIChatWidget />
