@@ -62,8 +62,7 @@ cd backend
 
 # 2. Create and activate virtual environment
 python -m venv venv
-source venv/bin/activate        # Linux/Mac
-venv\Scripts\activate           # Windows
+source venv/bin/activate      # On Windows: venv\Scripts\activate
 
 # 3. Install Python dependencies
 pip install -r requirements.txt
@@ -108,7 +107,7 @@ npm run dev
 
 ```json
 {
-  "vehicle_count": 7,
+  "vehicle_count": 12,
   "encroachment_alert": true,
   "dynamic_green_time": 21,
   "carbon_saved_kg": 0.0117,
