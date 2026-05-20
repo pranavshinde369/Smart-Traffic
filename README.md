@@ -7,7 +7,7 @@
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-blue)](https://github.com/ultralytics/ultralytics)
 
 ## 1. Project Title and Description
-**SMC-Niyantran (Smart Traffic)** is a decentralized, AI-driven traffic intelligence platform designed for the Solapur Municipal Corporation (SMC) under the Samved Hackathon. The system utilizes existing CCTV infrastructure and edge computing (Raspberry Pi 4) to eliminate the inefficiencies of fixed 60-second traffic signals, saving commute time, fuel, and reducing carbon emissions. It features automatic encroachment detection, dynamic RL-based signal optimization, auto E-Challan generation, and a specialized one-click "Yatra Mode" for managing massive pilgrim crowds during the Siddheshwar Yatra.
+**SMC-Niyantran (Smart Traffic)** is a decentralized, AI-driven traffic intelligence platform designed for the Solapur Municipal Corporation (SMC). The system utilizes existing CCTV infrastructure and edge computing (Raspberry Pi 4) to eliminate the inefficiencies of fixed 60-second traffic signals, saving commute time, fuel, and reducing carbon emissions. It features automatic encroachment detection, dynamic RL-based signal optimization, auto E-Challan generation, and a specialized one-click "Yatra Mode" for managing massive pilgrim crowds during the Siddheshwar Yatra.
 
 ## 2. Features
 - **Dynamic RL Optimizer:** Replaces fixed timers with adaptive signal control based on real-time vehicle density (reducing wait times by ~68.7%).
